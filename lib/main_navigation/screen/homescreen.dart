@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:thred/constants/gaps.dart';
 import 'package:thred/constants/sizes.dart';
@@ -12,8 +13,16 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Padding(
+    return Scaffold(
+      appBar: AppBar(
+        surfaceTintColor: Colors.white,
+        centerTitle: true,
+        title: SvgPicture.asset(
+          "lib/assets/threads.svg",
+          width: Sizes.size28,
+        ),
+      ),
+      body: const Padding(
         padding: EdgeInsets.symmetric(
           horizontal: Sizes.size24,
         ),
@@ -55,7 +64,7 @@ class HomeScreen extends StatelessWidget {
                 name: "flutter",
                 text: "Vine after seeing the Threads logo inveiled",
               ),
-              ThreadImg( 
+              ThreadImg(
                 icon: FontAwesomeIcons.cat,
                 name: "cat",
                 text: "Cute Cat",

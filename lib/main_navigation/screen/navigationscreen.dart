@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:thred/constants/sizes.dart';
+import 'package:thred/main_navigation/activity/activityscreen.dart';
 import 'package:thred/main_navigation/screen/homescreen.dart';
+import 'package:thred/main_navigation/search/search_screen.dart';
 import 'package:thred/main_navigation/widget/nav_tap.dart';
 
 class NavigationScreen extends StatefulWidget {
@@ -24,14 +26,6 @@ class _NavigationScreenState extends State<NavigationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        surfaceTintColor: Colors.white,
-        centerTitle: true,
-        title: SvgPicture.asset(
-          "lib/assets/threads.svg",
-          width: Sizes.size28,
-        ),
-      ),
       body: Stack(
         children: [
           //navigaionbar에서 탭 이동후 다시 돌아왔을때 화면이 초기화되는것이 아니라 고객이 본 그 view를 그대로 볼수 있도록
@@ -41,11 +35,15 @@ class _NavigationScreenState extends State<NavigationScreen> {
           ),
           Offstage(
             offstage: _selectedIndex != 1,
-            child: Container(),
+            child: const SearchScreen(),
+          ),
+          Offstage(
+            offstage: _selectedIndex != 2,
+            child: const SearchScreen(),
           ),
           Offstage(
             offstage: _selectedIndex != 3,
-            child: Container(),
+            child:  ActivityScreen(),
           ),
           Offstage(
             offstage: _selectedIndex != 4,
