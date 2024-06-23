@@ -122,7 +122,7 @@ class ActivityScreen extends StatelessWidget {
                             ),
                             children: const [
                               TextSpan(
-                                text: "Here's a thread you should follow",
+                                text: "Here's a thread you should follow @dongglix haha hoho huhu",
                                 style: TextStyle(
                                   fontSize: Sizes.size20,
                                   color: Colors.black,
@@ -130,6 +130,8 @@ class ActivityScreen extends StatelessWidget {
                               ),
                             ],
                           ),
+                          maxLines: 3,
+                          overflow: TextOverflow.ellipsis,
                         ),
                         isThreeLine: true,
                       ),

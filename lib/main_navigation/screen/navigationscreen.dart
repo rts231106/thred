@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:thred/constants/gaps.dart';
 import 'package:thred/constants/sizes.dart';
 import 'package:thred/main_navigation/activity/activityscreen.dart';
 import 'package:thred/main_navigation/screen/homescreen.dart';
 import 'package:thred/main_navigation/search/search_screen.dart';
 import 'package:thred/main_navigation/widget/nav_tap.dart';
+import 'package:thred/main_navigation/widget/video_comments.dart';
 
 class NavigationScreen extends StatefulWidget {
   const NavigationScreen({super.key});
@@ -21,6 +23,15 @@ class _NavigationScreenState extends State<NavigationScreen> {
     setState(() {
       _selectedIndex = index;
     });
+  }
+
+  void _onCommentsTap() async {
+    await showModalBottomSheet(
+      isScrollControlled: true,
+      context: context,
+      backgroundColor: Colors.transparent,
+      builder: (context) => const VideoComments(image: null, isPicked: false,),
+    );
   }
 
   @override
@@ -43,7 +54,7 @@ class _NavigationScreenState extends State<NavigationScreen> {
           ),
           Offstage(
             offstage: _selectedIndex != 3,
-            child:  ActivityScreen(),
+            child: ActivityScreen(),
           ),
           Offstage(
             offstage: _selectedIndex != 4,
@@ -71,10 +82,23 @@ class _NavigationScreenState extends State<NavigationScreen> {
                 icon: FontAwesomeIcons.magnifyingGlass,
                 onTap: () => _onTap(1),
               ),
-              NavTab(
-                isSelecte: _selectedIndex == 2,
-                icon: FontAwesomeIcons.noteSticky,
-                onTap: () => _onTap(2),
+              GestureDetector(
+                onTap: _onCommentsTap,
+                child: AnimatedOpacity(
+                  duration: const Duration(milliseconds: 200),
+                  opacity: _selectedIndex == 2 ? 1 : 0.6,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      FaIcon(
+                        FontAwesomeIcons.noteSticky,
+                        color: _selectedIndex == 2 ? Colors.black : Colors.grey,
+                        size: Sizes.size32,
+                      ),
+                      Gaps.v2,
+                    ],
+                  ),
+                ),
               ),
               NavTab(
                 isSelecte: _selectedIndex == 3,
