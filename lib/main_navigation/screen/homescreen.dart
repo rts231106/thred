@@ -7,8 +7,10 @@ import 'package:thred/constants/gaps.dart';
 import 'package:thred/constants/sizes.dart';
 import 'package:thred/main_navigation/widget/threadtext.dart';
 import 'package:thred/main_navigation/widget/thredImg.dart';
+import 'package:thred/utils.dart';
 
 class HomeScreen extends StatelessWidget {
+  static const routeName = "/";
   const HomeScreen({super.key});
 
   @override
@@ -20,6 +22,7 @@ class HomeScreen extends StatelessWidget {
         title: SvgPicture.asset(
           "lib/assets/threads.svg",
           width: Sizes.size28,
+          color: isDarkMode(context) ?  Colors.white : Colors.black,
         ),
       ),
       body: const Padding(
@@ -66,7 +69,7 @@ class HomeScreen extends StatelessWidget {
               ),
               ThreadImg(
                 icon: FontAwesomeIcons.cat,
-                name: "cat",
+                name: "Cat",
                 text: "Cute Cat",
               )
             ],

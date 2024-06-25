@@ -7,6 +7,7 @@ import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:thred/constants/gaps.dart';
 import 'package:thred/constants/sizes.dart';
+import 'package:thred/utils.dart';
 
 class ThreadImg extends StatelessWidget {
   final IconData icon;
@@ -22,6 +23,7 @@ class ThreadImg extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isDark = isDarkMode(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -34,14 +36,14 @@ class ThreadImg extends StatelessWidget {
                 Container(
                   width: 40.0, // 원하는 너비로 설정
                   height: 40.0, // 원하는 높이로 설정
-                  decoration: const BoxDecoration(
-                    color: Colors.black,
+                  decoration:  BoxDecoration(
+                    color: isDark ? Colors.white : Colors.black,
                     shape: BoxShape.circle,
                   ),
                   child: Center(
                     child: FaIcon(
                       icon,
-                      color: Colors.white,
+                      color: isDark ? Colors.black : Colors.white,
                       size: Sizes.size20,
                     ),
                   ),
@@ -75,8 +77,8 @@ class ThreadImg extends StatelessWidget {
                   bottom: 15,
                   child: Text(
                     name,
-                    style: const TextStyle(
-                      color: Colors.black,
+                    style:  TextStyle(
+                      color:  isDark ? Colors.white : Colors.black,
                       fontWeight: FontWeight.bold,
                       fontSize: Sizes.size20,
                     ),

@@ -30,7 +30,10 @@ class _NavigationScreenState extends State<NavigationScreen> {
       isScrollControlled: true,
       context: context,
       backgroundColor: Colors.transparent,
-      builder: (context) => const VideoComments(image: null, isPicked: false,),
+      builder: (context) => const VideoComments(
+        image: null,
+        isPicked: false,
+      ),
     );
   }
 
@@ -63,7 +66,6 @@ class _NavigationScreenState extends State<NavigationScreen> {
         ],
       ),
       bottomNavigationBar: BottomAppBar(
-        color: Colors.white,
         surfaceTintColor: Colors.white,
         child: Padding(
           padding: const EdgeInsets.symmetric(

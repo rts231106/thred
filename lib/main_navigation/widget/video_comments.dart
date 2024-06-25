@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:camera/camera.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -45,11 +46,13 @@ class _VideoCommentsState extends State<VideoComments> {
         resizeToAvoidBottomInset: false,
         backgroundColor: Colors.grey.shade50,
         appBar: AppBar(
+         
           centerTitle: true,
           backgroundColor: Colors.grey.shade50,
           title: const Text(
             "New Thread",
             style: TextStyle(
+              color: Colors.black,
               fontSize: Sizes.size20,
               fontWeight: FontWeight.bold,
             ),
@@ -79,6 +82,7 @@ class _VideoCommentsState extends State<VideoComments> {
                           style: TextStyle(
                             fontSize: Sizes.size20,
                             fontWeight: FontWeight.bold,
+                            color: Colors.black,
                           ),
                         ),
                       ],
@@ -95,6 +99,9 @@ class _VideoCommentsState extends State<VideoComments> {
                       maxLines: 3,
                       decoration: InputDecoration(
                         hintText: 'Add a comment...',
+                        hintStyle: TextStyle(
+                          color: Colors.grey,
+                        ),
                         contentPadding: EdgeInsets.all(0),
                         enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(
@@ -131,6 +138,7 @@ class _VideoCommentsState extends State<VideoComments> {
                             onPressed: _onCameraTap,
                             icon: const FaIcon(
                               FontAwesomeIcons.camera,
+                              color: Colors.black,
                             ),
                           ),
                         ),

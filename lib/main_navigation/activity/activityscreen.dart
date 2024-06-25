@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:thred/constants/gaps.dart';
 import 'package:thred/constants/sizes.dart';
+import 'package:thred/utils.dart';
 
 final tabs = [
   "All",
@@ -15,6 +16,7 @@ final tabs = [
 ];
 
 class ActivityScreen extends StatelessWidget {
+  static const routeName = "/activity";
   ActivityScreen({super.key});
 
   final List<String> _notifications = List.generate(20, (index) => "${index}h");
@@ -33,6 +35,7 @@ class ActivityScreen extends StatelessWidget {
               vertical: Sizes.size20,
             ),
             child: AppBar(
+              centerTitle: true,
               title: const Text(
                 'Activity',
                 style: TextStyle(
@@ -48,7 +51,8 @@ class ActivityScreen extends StatelessWidget {
                 dividerColor: Colors.transparent,
                 splashFactory: NoSplash.splashFactory,
                 isScrollable: true,
-                unselectedLabelColor: Colors.black,
+                unselectedLabelColor:
+                    isDarkMode(context) ? Colors.grey : Colors.black,
                 labelColor: Colors.white,
                 indicatorColor: Colors.black,
                 indicator: BoxDecoration(
@@ -114,18 +118,17 @@ class ActivityScreen extends StatelessWidget {
                           ],
                         ),
                         subtitle: RichText(
-                          text: TextSpan(
+                          text: const TextSpan(
                             text: "mentioned you\n",
                             style: TextStyle(
-                              color: Colors.grey.shade500,
                               fontSize: Sizes.size20,
                             ),
-                            children: const [
+                            children: [
                               TextSpan(
-                                text: "Here's a thread you should follow @dongglix haha hoho huhu",
+                                text:
+                                    "Here's a thread you should follow @dongglix haha hoho huhu",
                                 style: TextStyle(
                                   fontSize: Sizes.size20,
-                                  color: Colors.black,
                                 ),
                               ),
                             ],
